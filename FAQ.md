@@ -1,4 +1,4 @@
-
+[![Back to README](https://img.shields.io/badge/🚀-Back_to_README-blue?style=flat-square)](README.md)
 
 # 💡 常见问题与排雷日记 (FAQ & Debug Log)
 
@@ -19,22 +19,22 @@
 ---
 
 ### Q1.2: 为什么针头穿刺深度估算（20260603作业）可以不依赖“针头顶部坐标（0cm处）”进行鲁棒计算？
-**A**: 
 
-在真实的临床场景中，医生的手指抓握通常会遮挡针头顶部（0cm 处）。
+**A**: 在真实的临床场景中，医生的手指抓握通常会遮挡针头顶部（0cm 处）。
+
 为了解决该工程限制，我们利用手柄（Cylinder 套管）在物理世界上恒等于 $2\text{ cm}$（1cm至3cm处）的硬约束，在图像中计算手柄的像素跨度 $H_{\text{handle}}$，从而获得尺度比例尺：
 $$k = \frac{2.0}{H_{\text{handle}}} \quad (\text{cm/pixel})$$
-因此，我们只需在图像中追踪**手柄下边缘（3cm处）至皮肤表面入射点**的垂直像素差 $D_{\text{skin\_to\_handle}}$，即可计算出暴露在外的下段针长：
-$$L_{\text{exposed}} = D_{\text{skin\_to\_handle}} \times k$$
+因此，我们只需在图像中追踪**手柄下边缘（3cm处）至皮肤表面入射点**的垂直像素差 $D_{\text{skin-to-handle}}$，即可计算出暴露在外的下段针长：
+$$L_{\text{exposed}} = D_{\text{skin-to-handle}} \times k$$
 由于下段针总长为 $2\text{ cm}$，最终扎入体内的深度 $P$ 可以通过以下完全无需针头顶部的公式获得：
-$$P = 2.0 - L_{\text{exposed}} = 2.0 \times \left(1 - \frac{D_{\text{skin\_to\_handle}}}{H_{\text{handle}}}\right) \quad (\text{cm})$$
+$$P = 2.0 - L_{\text{exposed}} = 2.0 \times \left(1 - \frac{D_{\text{skin-to-handle}}}{H_{\text{handle}}}\right) \quad (\text{cm})$$
 
 ---
 
 ## 2. 真实工程排雷日记 
 
-
 ### Q2.1: 在数据预处理中，为什么调用 `df['Class'].astype(str).str.strip().upper()` 会抛出 `AttributeError: 'Series' object has no attribute 'upper'`？
+
 *   **问题现场**：
     在对干豆脏标签进行大小写规整化时，试图通过链式调用直接转大写，程序中断崩溃。
 *   **成因剖析**：
@@ -48,6 +48,7 @@ $$P = 2.0 - L_{\text{exposed}} = 2.0 \times \left(1 - \frac{D_{\text{skin\_to\_h
 ---
 
 ### Q2.2: 在训练支持向量机（SVM）时，为什么会抛出 `ValueError: Input X contains NaN`？数据清洗明明已经执行了 `fillna`。
+
 *   **问题现场**：
     在运行大作业评测脚本时，随机森林顺利通过，但运行到 `svm.fit(X_train, y_train)` 时程序中断崩溃。
 *   **成因剖析**：
@@ -72,6 +73,7 @@ $$P = 2.0 - L_{\text{exposed}} = 2.0 \times \left(1 - \frac{D_{\text{skin\_to\_h
 ---
 
 ### Q2.3: 运行 `main_ann.py` 进行 PyTorch 训练时，为什么报 `RuntimeError: mat1 and mat2 shapes cannot be multiplied (1047x9 and 7x64)`？
+
 *   **问题现场**：
     Titanic 神经网络前向传播时，在线性层 `F.linear(input, self.weight, self.bias)` 处抛出矩阵乘法不匹配错误。
 *   **成因剖析**：
