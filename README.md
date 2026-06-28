@@ -1,3 +1,5 @@
+[![FAQ](https://img.shields.io/badge/💡-FAQ_&_Debug_Log-9cf?style=flat-square)](FAQ.md)
+
 # 🚀 ML_Project: 模块化多任务机器学习与深度学习系统
 
 [![Python Version](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.13-blue.svg)](https://www.python.org/)
