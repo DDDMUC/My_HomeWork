@@ -4,7 +4,7 @@
 [![Framework](https://img.shields.io/badge/framework-PyTorch%20%7C%20Scikit--Learn-orange.svg)](https://pytorch.org/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-本项目是一个高度工程化的、开箱即用的多任务机器学习平台。通过统一解耦的数据预处理中心，实现用统一的命令行入口灵活调度**自定义逻辑回归、SVM、KNN、KD-Tree、线性回归以及多层感知机（ANN）**等多套算法，处理回归、二分类及高维图像多分类任务。
+本项目是一个高度工程化的、开箱即用的多任务机器学习平台。通过统一解耦的数据预处理中心，实现用统一的命令行入口灵活调度**自定义逻辑回归、SVM、KNN、KD-Tree、线性回归以及多层感知机（MLP/ANN）等多套算法，处理回归、二分类及高维图像多分类任务。
 
 ---
 
